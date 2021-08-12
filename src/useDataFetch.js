@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './index.css';
 
-function useDataFetch (url) {
+function DataFetch (url) {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -36,4 +36,4 @@ function useDataFetch (url) {
     );
 }
 
-export default useDataFetch;
+export default DataFetch;

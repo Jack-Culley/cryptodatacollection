@@ -1,15 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import useDataFetch from './useDataFetch';
+import Input from './Input.js';
+import Currency from './Currency.js';
+
 
 function Index() {
+  const [cryptocurrencies, setCoins] = useState([]);
+
+  const addCurrency = (coin) => {
+    const coins = [...cryptocurrencies, coin];
+    setCoins(coins);
+  }
 
   return (
     <div>
       <App />
-        {useDataFetch('https://api.coingecko.com/api/v3/coins/juggernaut?localization=true&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false')}
+      <Input addCurrency={addCurrency}/>
+      <Currency coina={cryptocurrencies}/>
     </div>
   ); 
 }
