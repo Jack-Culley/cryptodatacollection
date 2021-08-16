@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './index.css';
 
-function DataFetch (url) {
+function DataFetch ({url}) {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -28,11 +28,20 @@ function DataFetch (url) {
     if(error) return "Error!";
 
     return(
-        <div>
-            <ul>
-                <li>{data.name}{data.description.en}{data.market_data.current_price.usd}</li>
-            </ul>
-        </div>
+                    <div className='coin-container'>
+                        <div className='coin-title'>
+                            {data.name}({data.symbol})
+                        </div>
+                        <div className='coin-info'>
+                            <div className='coin-image'>
+                                <img src={data.image.large} width='200px' height='200px'/>
+                            </div>
+                            <div className='coin-desc'>
+                                Current Price: {data.market_data.current_price.usd}
+                                Description: {data.description.en}
+                            </div>
+                        </div>
+                    </div>    
     );
 }
 
